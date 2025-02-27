@@ -86,22 +86,21 @@
 
         img {
             width: 100%;
-            max-width: 300px;
+            max-width: 500px;
             height: auto;
             border-radius: 10px;
-            margin-top: 550px;
-        }
+            margin-top: 55px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>QWERTY Coded Notes Passed From Your Best Friend</h1>
+        <h1> id="title" ><QWERTY Coded Notes Passed From Your Best Friend </h1>
         <div id="text-container"></div>
         <div class="sparkles" id="sparkles"></div>
          <p>Code: Translate the messages below from the Dvorak keyboard placement to the QWERTY keyboard with the same hand placement!</p>
         <button class="generate-btn" onclick="displayString()">Generate New Note</button>
-        <img src="image_1.png" alt="Keyboard Translator, courtesy of https://goblintechkeys.com/blogs/news/dvorak-vs-qwerty-keyboard-layout-to-switch-or-not-to-switch" style="width:500px;height:600px;">
+        <img src="image_1.png" alt="Keyboard Translator, courtesy of https://goblintechkeys.com/blogs/news/dvorak-vs-qwerty-keyboard-layout-to-switch-or-not-to-switch">
     </div>
     
     <script>
@@ -140,7 +139,7 @@
             const sparkle = document.createElement('div');
             sparkle.classList.add('sparkle');
             //set random color (white, soft pink, or vibrant pink)
-            const colors = ["#ffffff:, :ff99cc", "ff66aa"]; 
+            const colors = ["#ffffff", "ff99cc", "ff66aa"]; 
             sparkle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
             sparkle.style.left = `${x}px`;
             sparkle.style.top = `${y}px`;
@@ -164,7 +163,6 @@
         attachSparkleEffect(document.getElementById("title"));
         attachSparkleEffect(document.getElementById("text-container"));
         attachSparkleEffect(document.querySelector(".generate-btn"));
-    </script>
     </script>
 </body>
 </html>
