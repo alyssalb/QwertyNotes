@@ -82,9 +82,9 @@
         }
 
         @keyframes twinkle {
-            0% { opacity: 0.3; transform: scale(0.8); }
+            0% { opacity: 0.3; transform: scale(0.9); }
             50% { opacity: 1; transform: scale(1.1); }
-            100% { opacity: 0.3; transform: scale(0.8); }
+            100% { opacity: 0.3; transform: scale(0.9); }
         }
 
         .twinkle-star {
@@ -93,7 +93,7 @@
             height: 4px;
             background: white;
             border-radius: 50%; 
-            animation: twinkle 3s infinite alternate;
+            animation: twinkle 15s infinite alternate ease-in-out;
             opacity: 0.5; 
         }
 
@@ -186,31 +186,6 @@
         attachSparkleEffect(document.getElementById("text-container"));
         attachSparkleEffect(document.querySelector(".generate-btn"));
         });
-
-        function createGlitterTrail(x, y) {
-            const sparkle = document.createElement("div"); 
-            sparkle.classList.add("sparkle"); 
-
-            const colors = ["#ffffff", "#ff99cc", "#ff66aa"];
-            sparkle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-
-            sparkle.style.position = "fixed"; 
-            sparkle.style.left = '${x}px'; 
-            sparkle.style.top + '${y}px';
-
-            const size = Math.random() * 6 + 2; 
-            sparkle.style.width = '${size}px';
-            sparkle.style.height = '${size}px';
-
-        document.body.appendChild(sparkle);
-        const lifespan = Math.random() > 0.5 ? 2000 : 1000; 
-
-        setTimeout(() => sparkle.remove(), lifespan);
-        } 
-        document.addEventListener("mousemove", (e) => {
-            createGlitterTrail(e.clientX, e.clientY);
-        });
-
         
         function createTwinkleStars() {
          for (let i = 0; i < 30; i++) { // Adjust for more or fewer stars
