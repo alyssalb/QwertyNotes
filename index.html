@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magical Home</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ffd6e0, #e0ffd6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            text-align: center;
+            position: relative;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #ff69b4;
+            text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff99cc, 0 0 30px white;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff99cc, 0 0 30px white;
+            }
+            to {
+                text-shadow: 0 0 20px #ff66aa, 0 0 30px #ff66aa, 0 0 40px white;
+            }
+        }
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .sparkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            box-shadow: 0 0 10px white;
+            animation: sparkle-animation 3s infinite;
+        }
+        @keyframes sparkle-animation {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-100px) scale(0); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Magic</h1>
+        <p>Something enchanting awaits...</p>
+        <div class="sparkles" id="sparkles"></div>
+    </div>
+    
+    <script>
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            document.getElementById('sparkles').appendChild(sparkle);
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.animationDuration = Math.random() * 2 + 1 + 's';
+            setTimeout(() => sparkle.remove(), 3000);
+        }
+        setInterval(createSparkle, 300);
+    </script>
+</body>
+</html>
