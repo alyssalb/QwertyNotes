@@ -36,7 +36,7 @@
         h1 {
             font-size: 2.5rem;
             text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff99cc, 0 0 30px white;
-            animation: rainbowGlow 60s infinite alternate ease-in-out;
+            animation: rainbowGlow 30s infinite alternate ease-in-out;
         }
 
         #text-container {
@@ -82,9 +82,9 @@
         }
 
         @keyframes twinkle {
-            0% { opacity: 0.4; transform: scale(1); }
+            0% { opacity: 0.3; transform: scale(0.9); }
             50% { opacity: 0.8; transform: scale(1.1); }
-            100% { opacity: 0.4; transform: scale(1); }
+            100% { opacity: 0.3; transform: scale(0.9); }
         }
 
         .twinkle-star {
@@ -93,7 +93,7 @@
             height: 4px;
             background: white;
             border-radius: 50%; 
-            animation: twinkle 30s infinite alternate ease-in-out;
+            animation: twinkle 15s infinite alternate ease-in-out;
             opacity: 0.5; 
         }
 
@@ -184,7 +184,6 @@
             
         attachSparkleEffect(document.getElementById("title"));
         attachSparkleEffect(document.getElementById("text-container"));
-        attachSparkleEffect(document.querySelector(".generate-btn"));
         });
         
         function createTwinkleStars() {
