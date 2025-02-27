@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magical Generative Page</title>
+    <title>Generative QWERTYNotes</title>
     <style>
         body {
             margin: 0;
@@ -21,6 +21,10 @@
         .container {
             position: relative;
             max-width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
         }
         h1 {
             font-size: 3rem;
@@ -33,12 +37,28 @@
             to { text-shadow: 0 0 20px #ff66aa, 0 0 30px #ff66aa, 0 0 40px white; }
         }
         #text-container {
-            font-size: 2rem;
-            color: #333;
+            font-size: 1.5rem;
+            color: white;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.8);
+            background: #222;  /* Dark grey background */
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
+            min-height: 100px;
+        }
+        .generate-btn {
+            background: #ff69b4;
+            color: white;
+            font-size: 1.2rem;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .generate-btn:hover {
+            background: #ff458a;
         }
         .sparkles {
             position: absolute;
@@ -70,6 +90,12 @@
             #text-container {
         font-size: 1.5rem;
             }
+        img {
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
         }
     </style>
 </head>
@@ -78,8 +104,9 @@
         <h1>QWERTY Coded Notes Passed From Your Best Friend</h1>
         <div id="text-container"></div>
         <div class="sparkles" id="sparkles"></div>
+        <button class="generate-btn" onclick="displayString()">Generate New Note</button>
         <p>Code: Translate the messages below from the Dvorak keyboard placement to the QWERTY keyboard with the same hand placement!</p>
-        <img> src="image_1.png" alt="Keyboard Translator, courtesy of https://goblintechkeys.com/blogs/news/dvorak-vs-qwerty-keyboard-layout-to-switch-or-not-to-switch" style="width:500px;height:600px;" </img>
+        <img src="image_1.png" alt="Keyboard Translator, courtesy of https://goblintechkeys.com/blogs/news/dvorak-vs-qwerty-keyboard-layout-to-switch-or-not-to-switch" style="width:500px;height:600px;">
     </div>
     
     <script>
@@ -105,10 +132,10 @@
             return template;
         }
 
+
         function displayString() {
             var randomIndex = Math.floor(Math.random() * obj.origin.length);
             document.getElementById('text-container').innerHTML = generateString(obj.origin[randomIndex]);
-            setTimeout(displayString, 30000);
         }
 
         displayString();
