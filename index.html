@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QWERTYNotes</title>
+    <title>Magical Generative Page</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             background: linear-gradient(to bottom, #ffd6e0, #e0ffd6);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             overflow: hidden;
             font-family: 'Arial', sans-serif;
+            text-align: center;
         }
         .container {
-            text-align: center;
             position: relative;
+            max-width: 90%;
         }
         h1 {
             font-size: 3rem;
@@ -27,12 +29,16 @@
             animation: glow 2s infinite alternate;
         }
         @keyframes glow {
-            from {
-                text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff99cc, 0 0 30px white;
-            }
-            to {
-                text-shadow: 0 0 20px #ff66aa, 0 0 30px #ff66aa, 0 0 40px white;
-            }
+            from { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff99cc, 0 0 30px white; }
+            to { text-shadow: 0 0 20px #ff66aa, 0 0 30px #ff66aa, 0 0 40px white; }
+        }
+        #text-container {
+            font-size: 2rem;
+            color: #333;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .sparkles {
             position: absolute;
@@ -60,12 +66,44 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to the Magic</h1>
-        <p>Something enchanting awaits...</p>
+        <h1>QWERTY Coded Notes Passed From Your Best Friend</h1>
+        <div id="text-container"></div>
         <div class="sparkles" id="sparkles"></div>
+        <p>Code: Translate the messages below from the Dvorak keyboard placement to the QWERTY keyboard with the same hand placement!</p>
+        <img src="image_1.png" alt="Keyboard Translator, courtesy of https://goblintechkeys.com/blogs/news/dvorak-vs-qwerty-keyboard-layout-to-switch-or-not-to-switch"
     </div>
     
     <script>
+        var obj = {
+            "origin": [
+                "My best friend is a #emphasis# #adjective# #noun#."
+            ],
+            "emphasis": ["tru", "sparkling", "radiant", "ethereal", "shimmering"],
+            "subject": ["a celestial being", "a mystical creature", "a whispering breeze", "a wandering spirit"],
+            "action": ["dances", "glides", "whispers", "shines", "sings"]
+        };
+        
+        function generateString(template) {
+            let placeholder = template.match(/#([^#]+)#/);
+            while (placeholder) {
+                let [fullMatch, key] = placeholder;
+                let choices = obj[key];
+                if (!choices) throw new Error(`No choices for key '${key}'`);
+                let choice = choices[Math.floor(Math.random() * choices.length)];
+                template = template.replace(fullMatch, generateString(choice));
+                placeholder = template.match(/#([^#]+)#/);
+            }
+            return template;
+        }
+
+        function displayString() {
+            var randomIndex = Math.floor(Math.random() * obj.origin.length);
+            document.getElementById('text-container').innerHTML = generateString(obj.origin[randomIndex]);
+            setTimeout(displayString, 30000);
+        }
+
+        displayString();
+        
         function createSparkle() {
             const sparkle = document.createElement('div');
             sparkle.classList.add('sparkle');
@@ -79,3 +117,4 @@
     </script>
 </body>
 </html>
+
