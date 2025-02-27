@@ -23,10 +23,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
         h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: #ff69b4;
             text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff99cc, 0 0 30px white;
             animation: glow 2s infinite alternate;
@@ -46,6 +46,7 @@
             width: 80%;
             max-width: 600px;
             min-height: 100px;
+            margin-top: 20px; 
             position: relative; 
         }
         .generate-btn {
@@ -58,6 +59,7 @@
             cursor: pointer;
             transition: 0.3s;
             position: relative;
+            margin-top: 10px; 
         }
         .generate-btn:hover {
             background: #ff458a;
@@ -80,18 +82,12 @@
             100% { transform: scale(0); opacity: 0; }
         }
 
-        @media (max-width: 600px) {
-            h1 {
-        font-size: 2rem;
-            }
-            #text-container {
-        font-size: 1.5rem;
-            }
         img {
             width: 80%;
             max-width: 500px;
+            height: auto;
             border-radius: 10px;
-            margin-top: 20px;
+            margin-top: 40px;
         }
         }
     </style>
@@ -101,8 +97,8 @@
         <h1>QWERTY Coded Notes Passed From Your Best Friend</h1>
         <div id="text-container"></div>
         <div class="sparkles" id="sparkles"></div>
+         <p>Code: Translate the messages below from the Dvorak keyboard placement to the QWERTY keyboard with the same hand placement!</p>
         <button class="generate-btn" onclick="displayString()">Generate New Note</button>
-        <p>Code: Translate the messages below from the Dvorak keyboard placement to the QWERTY keyboard with the same hand placement!</p>
         <img src="image_1.png" alt="Keyboard Translator, courtesy of https://goblintechkeys.com/blogs/news/dvorak-vs-qwerty-keyboard-layout-to-switch-or-not-to-switch" style="width:500px;height:600px;">
     </div>
     
