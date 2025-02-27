@@ -70,7 +70,6 @@
             border-radius: 50%;
             opacity: 0.8; 
             animation: sparkle-animation 1s ease-out;
-            pointer-events: none;
         }
         @keyframes sparkle-animation {
             0% { transform: scale(1); opacity: 1; }
@@ -129,9 +128,12 @@
         displayString();
         
 
-        function createSparkle(x, y, parent) {
+        function createSparkle(x, y) {
+            console.log("Creating sparkle at:", x, y); 
+            
             const sparkle = document.createElement('div');
             sparkle.classList.add('sparkle');
+            
             //set random color (white, soft pink, or vibrant pink)
             const colors = ["#ffffff", "#ff99cc", "#ff66aa"]; 
             sparkle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
@@ -149,15 +151,24 @@
         }
 
         function attachSparkleEffect(element) {
+            if (!element) {
+                consolte.warn("Element not found for sparkle effect"); 
+                return; 
+            }
+            
             element.addEventListener("mousemove", (e) => {
                 createSparke(e.clientX, e.clientY);
             });
         }
 
         // Attach sparkle effect to elements
+        document.addEventListener("DOMContentLoaded", () => {
+            console.long("Attaching sparkles to elements..."); 
+            
         attachSparkleEffect(document.getElementById("title"));
         attachSparkleEffect(document.getElementById("text-container"));
         attachSparkleEffect(document.querySelector(".generate-btn"));
+        });
     </script>
 </body>
 </html>
