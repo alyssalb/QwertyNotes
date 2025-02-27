@@ -64,13 +64,11 @@
 
         }
         .sparkle {
-            position: absolute;
+            position: fixed;
             width: 6px;
             height: 6px;
-            background: white;
             border-radius: 50%;
-            opacity: 0.8;
-            box-shadow: 0 0 10px white;
+            opacity: 0.8; 
             animation: sparkle-animation 1s ease-out;
             pointer-events: none;
         }
@@ -91,7 +89,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>QWERTY Coded Notes Passed From Your Best Friend</h1>
+        <h1 id="title">QWERTY Coded Notes Passed From Your Best Friend</h1>
         <div id="text-container"></div>
         <div class="sparkles" id="sparkles"></div>
         <p>Code: Translate the messages below from the Dvorak keyboard placement to the QWERTY keyboard with the same hand placement!</p>
@@ -135,23 +133,24 @@
             const sparkle = document.createElement('div');
             sparkle.classList.add('sparkle');
             //set random color (white, soft pink, or vibrant pink)
-            const colors = ["#ffffff", "ff99cc", "ff66aa"]; 
+            const colors = ["#ffffff", "#ff99cc", "#ff66aa"]; 
             sparkle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+           
             sparkle.style.left = `${x}px`;
             sparkle.style.top = `${y}px`;
-            sparkle.style.width = `${Math.random() * 8 + 4}px`; // Random size for variety
-            sparkle.style.height = sparkle.style.width;
-            parent.appendChild(sparkle);
+            
+            const size = Math.random() * 8 + 4;
+            sparkle.style.width = '${size}px';
+            sparkle.style.height = '${size}px';
+
+            document.body.appendChild(sparkle);
 
             setTimeout(() => sparkle.remove(), 1000);
         }
 
         function attachSparkleEffect(element) {
             element.addEventListener("mousemove", (e) => {
-                const rect = element.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                createSparkle(x, y, element);
+                createSparke(e.clientX, e.clientY);
             });
         }
 
