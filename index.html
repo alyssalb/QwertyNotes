@@ -62,6 +62,15 @@
             50% { opacity: 0.5; }
             100% { transform: translateY(-100px) scale(0); opacity: 0; }
         }
+
+        @media (max-width: 600px) {
+            h1 {
+        font-size: 2rem;
+            }
+            #text-container {
+        font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -70,7 +79,7 @@
         <div id="text-container"></div>
         <div class="sparkles" id="sparkles"></div>
         <p>Code: Translate the messages below from the Dvorak keyboard placement to the QWERTY keyboard with the same hand placement!</p>
-        <img src="image_1.png" alt="Keyboard Translator, courtesy of https://goblintechkeys.com/blogs/news/dvorak-vs-qwerty-keyboard-layout-to-switch-or-not-to-switch"
+        <img> src="image_1.png" alt="Keyboard Translator, courtesy of https://goblintechkeys.com/blogs/news/dvorak-vs-qwerty-keyboard-layout-to-switch-or-not-to-switch" style="width:500px;height:600px;" </img>
     </div>
     
     <script>
@@ -79,8 +88,8 @@
                 "My best friend is a #emphasis# #adjective# #noun#."
             ],
             "emphasis": ["YPGNF", "P>ANNF", "K>PF", ">QYP>M>NF", "LPRURGBENF", "GBE>BCAXNF"],
-            "subject": ["XPCNNCABY", "OMAPY", "TCBE", "JALAXN>", "<RBE>PUGN", "CBJP>ECXN>", "I>BCGO", "PAECABY", "UAXGNRGO", "CBJRMLAPAXN>", "IRPI>RGO", "XPAK>", "OLAPTNCBI", "UPC>BENF", "L>PORBAXN>", "CBY>NNCIBY", "OYPRBI", "JAPCBI", "YDRGIDYUGN", "ODCMM>PCBI"],
-            "action": ["UPCDBENF", "<PCY>P", "LPRIPAMM>P", "OYAP", "PRN>MRE>N", "N>AE>P", "AEKRJAY>", "OJDPNAP", "ICUY", "YP>AOGP>", "<RPEOMCYD", "OAI>", "DGMABCYAPCAB", "EFBAMR", "NGMCBAPF", "LRNFMAYD", "L>PORB", "OYRPF<>AK>P", "EGBI>RB MAOY>P", "PRJT JNCMX>P"]
+            "adjective": ["XPCNNCABY", "OMAPY", "TCBE", "JALAXN>", "<RBE>PUGN", "CBJP>ECXN>", "I>BCGO", "PAECABY", "UAXGNRGO", "CBJRMLAPAXN>", "IRPI>RGO", "XPAK>", "OLAPTNCBI", "UPC>BENF", "L>PORBAXN>", "CBY>NNCIBY", "OYPRBI", "JAPCBI", "YDRGIDYUGN", "ODCMM>PCBI"],
+            "noun": ["UPCDBENF", "<PCY>P", "LPRIPAMM>P", "OYAP", "PRN>MRE>N", "N>AE>P", "AEKRJAY>", "OJDPNAP", "ICUY", "YP>AOGP>", "<RPEOMCYD", "OAI>", "DGMABCYAPCAB", "EFBAMR", "NGMCBAPF", "LRNFMAYD", "L>PORB", "OYRPF<>AK>P", "EGBI>RB MAOY>P", "PRJT JNCMX>P"]
         };
         
         function generateString(template) {
