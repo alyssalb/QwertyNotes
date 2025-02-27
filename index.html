@@ -14,7 +14,6 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            overflow: hidden;
             font-family: 'Arial', sans-serif;
             text-align: center;
         }
@@ -142,9 +141,12 @@
         function createSparkle(x, y, parent) {
             const sparkle = document.createElement('div');
             sparkle.classList.add('sparkle');
+            //set random color (white, soft pink, or vibrant pink)
+            const colors = ["#ffffff:, :ff99cc", "ff66aa"]; 
+            sparkle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
             sparkle.style.left = `${x}px`;
             sparkle.style.top = `${y}px`;
-            sparkle.style.width = `${Math.random() * 6 + 4}px`; // Random size for variety
+            sparkle.style.width = `${Math.random() * 8 + 4}px`; // Random size for variety
             sparkle.style.height = sparkle.style.width;
             parent.appendChild(sparkle);
 
