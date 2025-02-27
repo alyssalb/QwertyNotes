@@ -129,13 +129,13 @@
         
 
         function createSparkle(x, y) {
-            console.log("Creating sparkle at:", x, y); 
             const sparkle = document.createElement('div');
             sparkle.classList.add('sparkle');
             //set random color (white, soft pink, or vibrant pink)
             const colors = ["#ffffff", "#ff99cc", "#ff66aa"]; 
             sparkle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-           
+
+            sparkle.style.position = "fixed";
             sparkle.style.left = `${x}px`;
             sparkle.style.top = `${y}px`;
             
@@ -158,6 +158,17 @@
                 createSparkle(e.clientX, e.clientY);
             });
         }
+
+        function createStarBurst(x, y) {
+            const numStars = Math.floor(Math.random() * 10) + 10; 
+            for (let i = 0; i < numStars; i++) {
+                const offsetX = (Math.random() - 0.5) * 100;
+                const offsetY = (Math.random() - 0.5) * 100; 
+                createSparkle(x + offsetX, y + offsetY); 
+
+        document.addEventListener("click", (e) => {
+            createStarBurst(e.clientX, e.clientY);
+        }); 
 
         // Attach sparkle effect to elements
         document.addEventListener("DOMContentLoaded", () => {
