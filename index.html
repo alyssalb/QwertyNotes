@@ -130,10 +130,8 @@
 
         function createSparkle(x, y) {
             console.log("Creating sparkle at:", x, y); 
-            
             const sparkle = document.createElement('div');
             sparkle.classList.add('sparkle');
-            
             //set random color (white, soft pink, or vibrant pink)
             const colors = ["#ffffff", "#ff99cc", "#ff66aa"]; 
             sparkle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
@@ -157,7 +155,7 @@
             }
             
             element.addEventListener("mousemove", (e) => {
-                createSparke(e.clientX, e.clientY);
+                createSparkle(e.clientX, e.clientY);
             });
         }
 
