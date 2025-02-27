@@ -24,17 +24,21 @@
             gap: 25px;
             margin-top: 35px;
         }
+         @keyframes rainbowGlow {
+            0% { color: #ff69b4; }
+            20% { color: #ff99cc; }
+            40% { color: #ffccff; }
+            60% { color: #99ccff; } 
+            80% { color: #66aaff; } 
+            100% { color: #ff69b4; } 
+        }
+        
         h1 {
             font-size: 2.5rem;
-            color: #ff69b4;
             text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff99cc, 0 0 30px white;
-            animation: glow 2s infinite alternate;
-            position: relative; 
+            animation: rainbowGlow 4s infinite alternate;
         }
-        @keyframes glow {
-            from { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff99cc, 0 0 30px white; }
-            to { text-shadow: 0 0 20px #ff66aa, 0 0 30px #ff66aa, 0 0 40px white; }
-        }
+
         #text-container {
             font-size: 1.5rem;
             color: white;
@@ -75,6 +79,22 @@
             0% { transform: scale(1); opacity: 1; }
             50% { opacity: 0.5; }
             100% { transform: scale(0); opacity: 0; }
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 0.3; transform: scale(0.8); }
+        }
+
+        .twinkle-star {
+            position: fixed; 
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%; 
+            animation: twinkle 3s infinite alternate;
+            opacity: 0.5; 
         }
 
         img {
@@ -166,6 +186,50 @@
         attachSparkleEffect(document.getElementById("text-container"));
         attachSparkleEffect(document.querySelector(".generate-btn"));
         });
+
+        function createGlitterTrail(x, y) {
+            const sparkle = document.createElement("div"); 
+            sparkle.classList.add("sparkle"); 
+
+            const colors = ["#ffffff", "#ff99cc", "#ff66aa"];
+            sparkle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+            sparkle.style.position = "fixed"; 
+            sparkle.style.left = '${x}px'; 
+            sparkle.style.top + '${y}px';
+
+            const size = Math.random() * 6 + 2; 
+            sparkle.style.width = '${size}px';
+            sparkle.style.height = '${size}px';
+
+        document.body.appendChild(sparkle);
+        const lifespan = Math.random() > 0.5 ? 2000 : 1000; 
+
+        setTimeout(() => sparkle.remove(), lifespan);
+        } 
+        document.addEventListener("mousemove", (e) => {
+            createGlitterTrail(e.clientX, e.clientY);
+        });
+
+        function createTwinkleStars() {
+    for (let i = 0; i < 30; i++) { // Adjust for more or fewer stars
+        const star = document.createElement("div");
+        star.classList.add("twinkle-star");
+
+        // Random position
+        star.style.left = `${Math.random() * 100}vw`;
+        star.style.top = `${Math.random() * 100}vh`;
+
+        // Random size
+        const size = Math.random() * 3 + 2;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+
+        document.body.appendChild(star);
+    }
+}
+createTwinkleStars();
+
     </script>
 </body>
 </html>
